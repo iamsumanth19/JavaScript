@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0px;
+        }
+        div{
+            background-color: aqua;
+            text-align: center;
+            padding: 30px;
+        }
+        div>button{
+           border: none;
+           padding:10px 15px;
+           border-radius: 10px;
+           margin-top: 10px;
+
+        }
+        div>button:hover{
+            cursor: pointer;
+            background-color: gray;
+            color:white;
+        }
+
+    </style>
+</head>
+<body>
+    <div>
+        <button onclick="home()">Home</button>
+        <button id="about-btn">About</button>
+        <button id="contact-btn">Contact</button>
+    </div>
+    <script>
+        // inline event handler
+        function home(){
+            document.title="Home page"
+        }
+        
+        // using event properties
+        
+        let aboutBtn=document.getElementById('about-btn')
+        aboutBtn.onclick=function(){
+            document.title="About page"
+        }
+
+        // Using addEventListener()
+        
+        let contactBtn=document.getElementById('contact-btn')
+        contactBtn.addEventListener('click',function(){
+            document.title="Contact page"
+        })
+    </script>
+</body>
+</html>
