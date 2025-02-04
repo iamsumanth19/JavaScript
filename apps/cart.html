@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        *{
+            margin: 0px;
+        }
+        nav{
+            background-color: black;
+            color: white;
+            padding: 20px;
+        }
+        .abc>button{
+            background-color: black;
+            color: white;
+            padding: 10px 10px;
+            border: 0px;
+            border-radius: 5px;
+            margin-top: 20px;
+            margin-left: 10px;
+        }
+        .abc>h1{
+            margin-top: 10px;
+            margin-left: 10px;
+        }
+        .abc>p{
+            margin-top: 10px;
+            margin-left: 10px;
+        }
+        .def{
+            margin-left: 10px;
+            margin-top: 20px;
+        }
+        table{
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+    <nav>
+        <h2>Amazon</h2>
+    </nav>
+    <section class="abc">
+        <h1>Cart Module:-</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed fugit totam repellendus a pariatur error possimus rem cumque voluptatem quibusdam veritatis, porro asperiores harum ratione consequatur! Fugiat libero voluptas, commodi officiis eveniet pariatur, ducimus cupiditate velit porro distinctio labore? Eum distinctio doloremque asperiores, autem blanditiis temporibus a error vel ut, qui, pariatur amet dignissimos accusamus obcaecati fuga aspernatur accusantium eligendi </p><button>Check out</button>
+    </section>
+    <section class="def">
+        <table width="100%" border>
+            <thead  >
+                <tr >
+                    <td>S.No</td>
+                    <td>Image</td>
+                    <td>Product Name</td>
+                    <td>Product Price</td>
+                    <td>Product Qty</td>
+                    <td>Total Price</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td >1</td>
+                    <td>
+                        <img src="https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MXM23ref_FV99_VW_34FR+watch-case-46-aluminum-jetblack-cell-s10_VW_34FR+watch-face-46-aluminum-jetblack-s10_VW_34FR?wid=752&hei=720&bgc=fafafa&trim=1&fmt=p-jpg&qlt=80&.v=TnVrdDZWRlZzTURKbHFqOGh0dGpVRW5TeWJ6QW43NUFnQ2V4cmRFc1VnYUdWejZ5THhpKzJwRmRDYlhxN2o5aWp3UWRQeU9ENTVkdnpWZ2VCQ1JYVkF1Z0RaeFB5LzRxZEliRVE2WkswOW5YNUh6UG9VcVpLK2VQampYMHFQR0ZraFRqYm9IdFcyZHNBc3g5MFNqQkIxRVpGM0VTYkFEYWkrVUpmdm5HMEsvZzdYL1dmbHI1ck0vS0dDZmJkTUNtcXlYK1hMV0U1ZW9xcCtlRHF3V3gyZThGL0dtL1JkeEJQSnRCMXJsZFBFY2doN2ZiODFwWklZeDgrZ0RtbVRXag" alt="" width="50px" height="50px">
+                    </td>
+                    <td>Apple watch</td>
+                    <td>&#8377; 40000</td>
+                    <td>
+                        <span onclick="decrQty(),decrPrice()"><i class="bi bi-file-minus-fill"></i></i></span>
+                        <span id="display-qty"></span>
+                        <span onclick="incrQty(),incrPrice()"><i class="bi bi-file-plus-fill"></i></i></span>
+                    </td>
+                    <td>&#8377; <span id="pro-price"></span></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+    <!-- script started -->
+     <script>
+        let qty=1;
+        let disQty=document.getElementById('display-qty')
+        disQty.textContent=qty;
+        function incrQty()
+        {
+            qty++
+            disQty.textContent=qty;
+        }
+        function decrQty()
+        {
+           if (qty>1){
+                qty--
+                disQty.textContent=qty;
+           }
+           else{
+            disQty.textContent=1;
+           }
+        }
+        let price= 40000;
+        let pro_price=document.getElementById('pro-price')
+        pro_price.textContent=price;
+        function incrPrice()
+        {
+            price+=40000    ;
+            pro_price.textContent=price;
+        }
+        function decrPrice()
+        {
+            if (price>40000){
+                price-=40000    ;
+                pro_price.textContent=price;
+            }
+            else{
+                pro_price.textContent=40000;
+            }
+        }
+
+     </script>
+</body>
+</html>

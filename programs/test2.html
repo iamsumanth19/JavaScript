@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0px;
+        }
+        div{
+            background-color: aqua;
+            text-align: center;
+            padding: 30px;
+        }
+        div>button{
+           border: none;
+           padding:10px 15px;
+           border-radius: 10px;
+           margin-top: 10px;
+
+        }
+        div>button:hover{
+            cursor: pointer;
+            background-color: gray;
+            color:white;
+        }
+
+    </style>
+</head>
+<body>
+    <div>
+        <h1 id="diplay-msg" >Display msg</h1>
+        <button onclick="displayMsg()">Click here</button>
+    </div>
+    <script>
+        function displayMsg()
+        {
+            let disMsg=document.getElementById('diplay-msg')
+            disMsg.textContent="This is dom"
+        }
+    </script>
+</body>
+</html>

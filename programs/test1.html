@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Header one</h1>
+    <h2 id="two">Header two</h2>
+    <div>
+        <h1>List of brands</h1>
+        <ol>
+            <li>Zara</li>
+            <li>Gucci</li>
+            <li>armanui</li>
+            <li class="abc">Lv</li>
+        </ol>
+    </div>
+    <script>
+        //document object methods
+        console.log(document.body.h2)//undefined
+        // if the selected id or any selectors is not present in dom tree then the respected method return null value
+        // null value is a false value 
+
+        let h2tag=document.getElementById('two');
+        console.log(h2tag)
+
+        h2tag.style.color="red";
+        h2tag.style.backgroundColor="yellow";
+
+        let listEle=document.getElementsByTagName('li');
+        console.log(listEle);
+
+        let Classtag=document.getElementsByClassName('abc');
+        console.log(Classtag)
+    </script>
+</body>
+</html>
