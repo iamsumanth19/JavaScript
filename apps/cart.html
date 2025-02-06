@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="../bootstrap/bootstrap-icons-1.11.3/bootstrap-icons-1.11.3/font/bootstrap-icons.min.css">
     <style>
         *{
             margin: 0px;
@@ -69,9 +70,9 @@
                     <td>Apple watch</td>
                     <td>&#8377; 40000</td>
                     <td>
-                        <span onclick="decrQty(),decrPrice()"><i class="bi bi-file-minus-fill"></i></i></span>
+                        <span onclick="qtyDec(),decPrice()"><i class="bi bi-file-minus-fill"></i></i></span>
                         <span id="display-qty"></span>
-                        <span onclick="incrQty(),incrPrice()"><i class="bi bi-file-plus-fill"></i></i></span>
+                        <span onclick="qtyInc(),incPrice()"><i class="bi bi-file-plus-fill"></i></i></span>
                     </td>
                     <td>&#8377; <span id="pro-price"></span></td>
                 </tr>
@@ -80,42 +81,100 @@
     </section>
     <!-- script started -->
      <script>
+        // localStorage.clear()
         let qty=1;
+        let qtyDisplay=document.getElementById("display-qty")
+        qtyDisplay.textContent=qty
+
+        qty=localStorage.getItem('qty')?localStorage.getItem('qty'):1;
+        localStorage.setItem('qty',qty)
+        qtyDisplay.textContent=localStorage.qty
+
+        let price=40000;
+        let disPrice=document.getElementById("pro-price")
+        disPrice.textContent=price;
+
+        price=localStorage.getItem('price')?Number(localStorage.getItem('price')):40000;
+        localStorage.setItem('price',price)
+        disPrice.textContent=localStorage.price
+
+        function qtyInc(){
+            qty++
+            localStorage.setItem('qty',qty)
+            qtyDisplay.textContent=localStorage.qty
+        }
+        function qtyDec(){
+            qty--
+            localStorage.setItem('qty',qty)
+            qtyDisplay.textContent=localStorage.qty
+            price-=40000
+            localStorage.setItem('price',price)
+            disPrice.textContent=price
+        }
+        function incPrice(){
+            price+=40000
+            localStorage.setItem('price',price)
+            disPrice.textContent=localStorage.price
+        }
+        function decPrice(){
+            price-=40000
+            localStorage.setItem('price',price)
+            disPrice.textContent=localStorage.price
+        }
+
+
+
+
+     </script>
+</body>
+</html>
+<!-- let qty=1;
         let disQty=document.getElementById('display-qty')
         disQty.textContent=qty;
+        qty=localStorage.getItem('qty')?localStorage.getItem('qty'):1;
+        disQty.textContent=localStorage.qty;
+
+        let price= 40000;
+        let pro_price=document.getElementById('pro-price')
+        pro_price.textContent=price;
+        price=localStorage.getItem('price')?localStorage.getItem('price'):40000;
+        pro_price.textContent=localStorage.price;
+
         function incrQty()
         {
             qty++
-            disQty.textContent=qty;
+            localStorage.setItem('qty',qty)
+            disQty.textContent=localStorage.qty;
+
         }
         function decrQty()
         {
            if (qty>1){
                 qty--
-                disQty.textContent=qty;
+                disQty.textContent=localStorage.qty;
            }
            else{
             disQty.textContent=1;
            }
+           localStorage.setItem('qty',qty)
         }
-        let price= 40000;
-        let pro_price=document.getElementById('pro-price')
-        pro_price.textContent=price;
-        function incrPrice()
+        
+        /* function incrPrice()
         {
-            price+=40000    ;
-            pro_price.textContent=price;
+            price+=40000;
+            pro_price.textContent=localStorage.price;
+            localStorage.setItem('price',price)
+
         }
         function decrPrice()
         {
             if (price>40000){
                 price-=40000    ;
-                pro_price.textContent=price;
+                pro_price.textContent=localStorage.price;
             }
             else{
                 pro_price.textContent=40000;
             }
-        }
-     </script>
-</body>
-</html>
+            localStorage.setItem('price',price)
+        }  */
+       localStorage.clear() -->
