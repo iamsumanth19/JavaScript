@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../bootstrap/bootstrap-5.3.3-dist/bootstrap-5.3.3-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../bootstrap/bootstrap-icons-1.11.3/bootstrap-icons-1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        .cc
+        {
+            border: 2px solid black;
+            border-radius: 100%;
+            background-color: black;
+            color: white;
+        }
+        .hidden{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#"><i class="bi bi-snow"></i>Amazon</a>
+          <button class="btn btn-light " id="modal-btn">show modal</button>
+        </div>
+    </nav>
+    <section>
+        <div class="container-fluid mt-5 ">
+            <div class="row  ">
+                <div class="col-6 m-auto hidden" id="modal-ele">
+                    <div class="card ">
+                        <div class="card-header text-center">
+                            <div class="row">
+                                <div class="col">
+                                    <button class="btn" id="step1">1</button>
+                                </div>
+                                <div class="col-3">
+                                    <button class="btn" id="step2">2</button>
+                                </div>
+                                <div class="col-3">
+                                    <button class="btn" id="step3">3</button>
+                                </div>
+                                <div class="col-3">
+                                    <button class="btn cc" id="close-btn">&times;</i></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body text-center">
+                            <p class="fw-bold" id="display-msg">Display message</p>
+                        </div>
+                        <div class="card-footer text-center">
+                            <div class="row">
+                                <div class="col-4">
+                                    <button class="btn btn-dark" id="prev-btn">
+                                        &larr; prev
+                                    </button>
+                                </div>
+                                <div class="col-4">
+                                    <!--empty-->
+                                </div>
+                                <div class="col-4">
+                                    <button class="btn btn-dark" id="next-btn">
+                                        next &rarr;
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div style="margin-bottom:300px">
+
+        </div>
+    </footer>
+    <!--Script Code-->
+    <script>
+        let pTag=document.querySelector('p');
+        let prevBtn=document.querySelector('#prev-btn');
+        let nextBtn=document.querySelector('#next-btn');
+
+        let stepBtn1=document.querySelector('#step1');
+        let stepBtn2=document.querySelector('#step2');
+        let stepBtn3=document.querySelector('#step3');
+
+        let modalEle=document.getElementById('modal-ele');
+        let modalBtn=document.getElementById('modal-btn');
+
+        let closeBtn=document.getElementById('close-btn');
+
+        let tasks=["Attend Class👩‍💻","Practice Assignments📖","Give Mock✍"]
+        let step=1
+
+        function updateUI()
+        {
+            pTag.textContent=`Step ${step}: ${tasks[step-1]}`;
+
+            if(step>=1) stepBtn1.classList.add('cc');
+            else stepBtn1.classList.remove('cc');
+
+            if(step>=2) stepBtn2.classList.add('cc');
+            else stepBtn2.classList.remove('cc');
+
+            if(step>=3) stepBtn3.classList.add('cc');
+            else stepBtn3.classList.remove('cc');
+        }
+        updateUI();
+        
+        nextBtn.addEventListener('click',function()
+        {
+            if(step<tasks.length)step++;
+            updateUI();
+        });
+
+        prevBtn.addEventListener('click',function()
+        {
+             if(step>1)step--;
+            updateUI();
+        });
+        
+        modalBtn.addEventListener('click',function()
+        {
+            modalEle.classList.remove('hidden');
+        })
+        closeBtn.addEventListener('click',function()
+        {
+            closeModel()
+        })
+        document.addEventListener('keyup',function(a){
+            if (a.key=="Escape" && !modalEle.classList.contains('hidden')){
+                closeModel()
+            }
+        })
+        function closeModel(){
+            modalEle.classList.add('hidden');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+  <style>
+    /* Styling */
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f0f2f5;
+    }
+    .login-container {
+      background-color: white;
+      padding: 20px 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 300px;
+    }
+    h2 {
+      text-align: center;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+    input[type="text"], input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 15px;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <h2>Register/Login</h2>
+    <form id="loginForm">
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username" required>
+
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" required>
+
+      <button type="button" onclick="registerUser()">Register</button>
+      <button type="button" onclick="loginUser()">Login</button>
+    </form>
+  </div>
+ 
+  <script>
+    // Store user data in the browser
+    function getUsers() {
+      return JSON.parse(localStorage.getItem('users')) || [];
+    }
+
+    function registerUser() {
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      const users = getUsers();
+
+      if (users.some(user => user.username === username)) {
+        alert('Username already exists! Please choose a different one.');
+      } else {
+        users.push({ username, password });
+        localStorage.setItem('users', JSON.stringify(users));
+        alert('Registration successful!');
+      }
+    }
+
+    function loginUser() {
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      const users = getUsers();
+
+      const user = users.find(user => user.username === username && user.password === password);
+
+      if (user) {
+        alert(`Welcome back, ${username}!`);
+      } else {
+        alert('Invalid username or password. Please try again.');
+      }
+    }
+  </script>
+</body>
+</html>

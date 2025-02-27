@@ -1,0 +1,8 @@
+{
+    "productsItem":[
+        {"id":101,"imgUrl":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9YQ-XOZxnZ8uH0qnG9_1iYs61Yxko6AuGWg&s","name":"iphone","price":50000,"qty":1},
+        {"id":102,"imgUrl":"https://images.jdmagicbox.com/quickquotes/images_main/sara-30-liters-polyester-black-school-bag-black-178207114-ksaft.jpg","name":"bag","price":1000,"qty":1},
+        {"id":103,"imgUrl":"https://m.media-amazon.com/images/I/71zkMUBbcWL._AC_UF1000,1000_QL80_.jpg","name":"iwatch","price":40000,"qty":1},
+        {"id":104,"imgUrl":"https://m.media-amazon.com/images/I/61BRKVOc4QL.jpg","name":"toy","price":1000,"qty":1}
+    ]
+}

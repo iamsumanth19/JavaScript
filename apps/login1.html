@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../bootstrap/bootstrap-5.3.3-dist/bootstrap-5.3.3-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../bootstrap/bootstrap-icons-1.11.3/bootstrap-icons-1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#"><i class="bi bi-snow"></i>Amazon</a>
+        </div>
+    </nav>
+    <div class="col-5 m-auto mt-5 " >
+        <div class="card m-auto">
+            <div class="card-head bg-dark text-white text-center">
+                <h2>Login</h2>
+            </div>
+            <div class="card-body">
+                <form action="" id="form-ele">
+                    <input type="text" class="form-control" placeholder="Enter Username" id="usn">
+                    <input type="password" class="form-control mt-3" placeholder="Enter password" id="pwd">
+                    <input type="submit" class="bg-dark btn text-white mt-3 ">
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <!--Script Code-->
+    <script>
+        formEle=document.getElementById('form-ele')
+        formEle.addEventListener('submit',function(e){
+            e.preventDefault() //stopping the default functionality of submit button
+            let usnEle=document.getElementById('usn')
+            usnValue=usnEle.value
+            let pwdEle=document.getElementById('pwd')
+            pwdValue=pwdEle.value
+            userObj={}
+            userObj.username=usnValue
+            userObj.password=pwdValue
+            console.log(userObj)
+            pwdEle.value=usnEle.value=''
+        })
+        
+       
+       
+    </script>
+</body>
+</html>

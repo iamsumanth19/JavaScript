@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CricXX - Home</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-image: url(images/cricket-dark-bg.png); /* Background image path */
+      background-size: cover;
+      background-position: right center;
+      color: white;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 50px;
+    }
+
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.6);
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: -1;
+    }
+
+    .container {
+      max-width: 400px;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 50px;
+      border-radius: 16px;
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.6);
+      z-index: 2;
+    }
+
+    h1 {
+      font-size: 3rem;
+      font-weight: 600;
+      color: #00FFCC;
+      text-shadow: 2px 2px 8px rgba(0, 255, 204, 0.8);
+    }
+
+    p {
+      font-size: 1.2rem;
+      margin-top: 10px;
+    }
+
+    .btn {
+      display: inline-block;  
+      background-color: #00FFCC;
+      color: black;
+      padding: 10px 20px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      margin-top: 20px;
+      box-shadow: 0 4px 8px rgba(0, 255, 204, 0.3);
+    }
+
+    .btn:hover {
+      background-color: #008080;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay"></div>
+  <div class="container">
+    <h1>CricXX</h1>
+    <p>Welcome to CricXX - Your Ultimate Cricket Score Tracker!</p>
+    <a href="dashboard.html" class="btn">Get Started</a>
+  </div>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../bootstrap/bootstrap-5.3.3-dist/bootstrap-5.3.3-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../bootstrap/bootstrap-icons-1.11.3/bootstrap-icons-1.11.3/font/bootstrap-icons.min.css">
+        
+    
+</head>
+<body>
+    <div class="collapse" id="navbarToggleExternalContent" data-bs-theme="dark">
+        <div class="bg-dark p-4">
+          <h5 class="text-body-emphasis h4">Collapsed content</h5>
+          <span class="text-body-secondary">Toggleable via the navbar brand.</span>
+        </div>
+      </div>
+      <nav class="navbar navbar-dark bg-dark">
+        <div class="container-fluid">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+      </nav>
+      <section>
+            <div class="card col-9 m-auto mt-5">
+                <div class="card-header bg-dark text-white">
+                    <h1 class="text-center">Student Info</h1>
+                </div>
+                <div class="card-body d-flex justify-content-around">
+                    <button type="button"  onclick="displayData()" class="btn btn-secondary ">All</button>
+                    <button type="button" onclick="maleData()" class="btn btn-secondary">Male</button>
+                    <button type="button" onclick="femaleData()"  class="btn btn-secondary">Female</button>
+                </div>
+                <div class="card-footer">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr class="text-center">
+                                <td><b>Id</b></td>
+                                <td><b>Name</b></td>
+                                <td><b>Marks</b></td>
+                                <td><b>Gender</b></td>
+                                <td><b>Phone</b></td>
+                            </tr>
+                        </thead>
+                        <tbody id="display-data">
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+      </section>
+<!-- script started -->
+      <script>
+        let s1={id:1,name:"Divya",marks:923,gender:"F",phone:898765678}
+        let s2={id:2,name:"Sumanth",marks:976,gender:"M",phone:98654567}
+        let s3={id:3,name:"Vanni",marks:765,gender:"F",phone:34565432}
+        let s4={id:4,name:"Sumit",marks:567,gender:"M",phone:87654345678}
+        let s5={id:5,name:"Mahesh",marks:678,gender:"M",phone:65434567}
+        let s6={id:6,name:"Sara",marks:766,gender:"F",phone:8765456776}
+        let students=[s1,s2,s3,s4,s5,s6]
+
+        let display_data=document.getElementById('display-data')
+        
+
+        function displayData(){
+           let data=''
+            students.forEach(element => {
+                data+=`<tr class="text-center">
+                                <td>${element.id}</td>
+                                <td>${element.name}</td>
+                                <td>${element.marks}</td>
+                                <td>${element.gender}</td>
+                                <td>${element.phone}</td>
+                            </tr>`
+            });
+            display_data.innerHTML=data
+        }
+        
+
+        function maleData(){
+            male_list=students.filter(element=>{
+                if (element.gender=="M") return true
+            })
+            data=''
+            male_list.forEach(element=>{
+                data+=`<tr class="text-center">
+                                <td>${element.id}</td>
+                                <td>${element.name}</td>
+                                <td>${element.marks}</td>
+                                <td>${element.gender}</td>
+                                <td>${element.phone}</td>
+                            </tr>`
+            });
+            display_data.innerHTML=data
+        }
+        
+
+        function femaleData(){
+            male_list=students.filter(element=>{
+                if (element.gender=="F") return true
+            })
+            data=''
+            male_list.forEach(element=>{
+                data+=`<tr class="text-center">
+                                <td>${element.id}</td>
+                                <td>${element.name}</td>
+                                <td>${element.marks}</td>
+                                <td>${element.gender}</td>
+                                <td>${element.phone}</td>
+                            </tr>`
+            });
+            display_data.innerHTML=data
+        }
+        
+      </script>
+</body>
+</html>

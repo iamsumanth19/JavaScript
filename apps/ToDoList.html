@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../bootstrap/bootstrap-5.3.3-dist/bootstrap-5.3.3-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../bootstrap/bootstrap-icons-1.11.3/bootstrap-icons-1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#"><i class="bi bi-snow"></i>Amazon</a>
+        </div>
+    </nav>
+    <div class="d-flex">
+        <div class="col-5 card ms-5 mt-5">
+            <div class="card-header text-center bg-dark text-white">
+                <h2>To-Do List</h2>
+            </div>
+            <div class="card-body">
+                <form action="" id="task-form">
+                    <input type="text" class="form-control" placeholder="Enter Task" id="task-ele">
+                    <input type="submit"  class="btn btn-primary mt-4" value="Add Task">
+                </form>
+            </div>
+        </div>
+        <div class="col-5 card ms-5 mt-5">
+            <div class="card-header text-center bg-dark text-white">
+                <h2>Upadate Here </h2>
+            </div>
+            <div class="card-body">
+                <form action="" id="update-form">
+                    <input type="text" class="form-control" placeholder="upadte the task" id="upadte-ele">
+                    <input type="submit"  class="btn btn-success mt-4" value="Upadate Task">
+                </form>
+            </div>
+        </div>
+        
+    </div>
+    <div class="col-5 ms-5 mt-5">
+        <div class="card">
+            <div class="card-header bg-dark text-white text-center">
+                <h1>Tasks</h1>
+            </div>
+            <div class="card-body">
+                <ul class="list-group" id="task-display">
+            
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    <script>
+    //localStorage.clear()
+       let formEle=document.getElementById('task-form');
+       let taskList=localStorage.getItem('tasks')?JSON.parse(localStorage.getItem('tasks')):[];
+       let inputEle=document.getElementById('task-ele')
+       let listItems=document.getElementById('task-display')
+
+       formEle.addEventListener('submit',function(event){
+       event.preventDefault();
+       let task=inputEle.value;
+       if (task==''){
+        alert('it does not accept empty values!!!')
+       }
+       else{
+        taskList.unshift(task);
+       }
+       
+       localStorage.setItem('tasks',JSON.stringify(taskList));
+       displayTask()
+       inputEle.value=''
+       })
+
+       // Diplaying function
+
+       function displayTask(){
+        if (taskList.length==0) return;
+
+        let displayVal=''
+        taskList.forEach((taskItem,index)=>{
+            displayVal+=`<li class="list-group-item">${taskItem}<button onclick="updateTasks(${index})" class="btn btn-warning float-end ms-3"><i class="bi bi-pencil-square"></i></button> <button onclick="deleteTasks(${index})" class="btn btn-danger float-end"><i class="bi bi-trash3-fill" ></i></button></li>`
+        })
+        listItems.innerHTML=displayVal;
+       }
+       displayTask()
+
+       //delete Function
+
+       function deleteTasks(index){
+        taskList.splice(index,1)
+        
+        if(taskList.length==0){
+            listItems.innerHTML='';
+        }
+        localStorage.setItem('tasks',JSON.stringify(taskList));
+       displayTask()
+       }
+
+       //upadting
+
+       upadteEle=document.getElementById('upadte-ele')
+       updateForm=document.getElementById('update-form')
+
+       updateForm.addEventListener('submit',function(event){
+        event.preventDefault();
+        
+        let updateTask=upadteEle.value;
+       if (updateTask==''){
+        alert('it does not accept empty values!!!')
+       }
+       else{
+        taskList.unshift(updateTask);
+       }
+       
+       localStorage.setItem('tasks',JSON.stringify(taskList));
+       displayTask()
+       upadteEle.value=''
+       })
+
+       //update function
+
+       function updateTasks(index){
+        upadteEle.value=taskList[index]
+        taskList.splice(index,1)
+        if(taskList.length==0){
+            listItems.innerHTML='';
+        }
+        localStorage.setItem('tasks',JSON.stringify(taskList));
+       displayTask()
+
+       }
+
+    </script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--  let taskForm=document.getElementById('task-form');
+        let taskList=localStorage.getItem('tasks')?JSON.parse(localStorage.getItem('tasks')):[];
+        let inputEle=document.getElementById('task-ele')
+        let taskDisplay=document.getElementById('task-display')
+
+        taskForm.addEventListener('submit',function(e){
+            e.preventDefault();
+            let task=inputEle.value;
+            if (task.trim() === '') {
+            alert("Task cannot be empty!");
+                return;
+            }
+            else{
+                taskList.unshift(task)
+            }
+            localStorage.setItem('tasks',JSON.stringify(taskList));
+            inputEle.value='';
+            DisplayTask(taskList)
+
+        })
+
+        // display function
+
+        function DisplayTask(taskList){
+            if (taskList.length==0) return;
+            let taskval='';
+            taskList.forEach((task,index)=>{
+                taskval+=`<li class="list-group-item">${task}<button onclick="upadteTasks(${index})" class="btn btn-warning float-end ms-3"><i class="bi bi-pencil-square"></i></button> <button onclick="deleteTask(${index})" class="btn btn-danger float-end"><i class="bi bi-trash3-fill" ></i></button></li>`
+            })
+            taskDisplay.innerHTML=taskval;
+        }
+        DisplayTask(taskList)
+
+        
+        // delete function
+
+        function deleteTask(index) {
+            taskList.splice(index, 1);
+            localStorage.setItem('tasks', JSON.stringify(taskList));
+    
+            // Clear the UI if there are no tasks left
+            if (taskList.length === 0) {
+                 taskDisplay.innerHTML = '';  // Clear the list display
+                 return;
+                }
+    
+            DisplayTask(taskList);
+        }
+        
+
+        // upadte tasks
+
+        function upadteTasks(index){
+            taskDisplay.value=taskList[index]
+            taskList.splice(index, 1);
+            localStorage.setItem('tasks', JSON.stringify(taskList));
+            if (taskList.length === 0) {
+                 taskDisplay.innerHTML = '';  // Clear the list display
+                 return;
+                }
+    
+            DisplayTask(taskList);
+
+        }
+
+ -->

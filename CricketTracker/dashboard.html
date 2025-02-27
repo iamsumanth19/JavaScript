@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CricXX - Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../bootstrap/bootstrap-icons-1.11.3/bootstrap-icons-1.11.3/font/bootstrap-icons.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f5f5f5;
+      min-height: 100vh;
+    }
+
+    /* Navigation Bar Styles */
+    nav {
+      background: linear-gradient(135deg, #008080, #20b2aa);
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      height: 50px;
+      margin-right: 10px;
+    }
+
+    .logo h2 {
+      color: white;
+      font-size: 1.8rem;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+    }
+
+    .nav-links li {
+      margin: 0 15px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: white;
+      font-weight: 600;
+      padding: 8px 12px;
+      border-radius: 5px;
+    }
+
+    .nav-links a:hover, .nav-links .active {
+      background-color: #20b2aa;
+    }
+
+    .auth-buttons a {
+      background-color: white;
+      color: #008080;
+      padding: 8px 12px;
+      border-radius: 20px;
+      text-decoration: none;
+      font-weight: 600;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+
+    .auth-buttons a:hover {
+      background-color: #20b2aa;
+      color: white;
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .modal-content {
+      background-color: white;
+      padding: 20px;
+      margin: 10% auto;
+      width: 30%;
+      border-radius: 10px;
+      text-align: center;
+      position: relative;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .modal input {
+      width: 80%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .modal button {
+      background-color: #008080;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .modal button:hover {
+      background-color: #20b2aa;
+    }
+    /* News Section Styles */
+    .news-section {
+      padding: 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .news-item {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .news-item:hover {
+      transform: scale(1.05);
+    }
+
+    .news-item img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .news-content {
+      padding: 15px;
+    }
+
+    .news-content h3 {
+      margin-bottom: 10px;
+      color: #008080;
+    }
+
+    .news-content p {
+      color: #555;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f5f5f5;
+      min-height: 100vh;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    body.dark-mode {
+      background-color: #121212;
+      color: white;
+    }
+
+    /* Navigation Bar Styles */
+    nav {
+      background: linear-gradient(135deg, #008080, #20b2aa);
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      height: 50px;
+      margin-right: 10px;
+    }
+
+    .logo h2 {
+      color: white;
+      font-size: 1.8rem;
+    }
+
+    .mode-toggle {
+      background: white;
+      color: #008080;
+      padding: 8px 12px;
+      border-radius: 20px;
+      text-decoration: none;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+    }
+
+    .mode-toggle:hover {
+      background-color: #20b2aa;
+      color: white;
+    }
+
+    .news-section {
+      padding: 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .news-item {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .dark-mode .news-item {
+      background: #1e1e1e;
+      color: white;
+    }
+
+    .news-item:hover {
+      transform: scale(1.05);
+    }
+
+    .news-item img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .news-content {
+      padding: 15px;
+    }
+
+    .news-content h3 {
+      margin-bottom: 10px;
+      color: #008080;
+    }
+
+    .dark-mode .news-content h3 {
+      color: #20b2aa;
+    }
+
+    .news-content p {
+      color: #555;
+    }
+
+    .dark-mode .news-content p {
+      color: #bbb;
+    }
+    .content{
+      margin-left: 20px;
+    }
+    /* Footer Styles */
+    footer {
+      background-color: #008080;
+      color: white;
+      text-align: center;
+      padding: 15px 0;
+      margin-top: 20px;
+    }
+  </styl
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo">
+      <img src="images/logo.webp" alt="CricXX Logo">
+      <h2>CricXX</h2>
+    </div>
+    <ul class="nav-links">
+      <li><a href="home.html" class="active">News</a></li>
+      <li><a href="live-matches.html">Live</a></li>
+      <li><a href="upcoming.html">Upcoming</a></li>
+      <li><a href="ongoing.html">Ongoing</a></li>
+    </ul>
+    <div class="auth-buttons">
+      <a onclick="openModal('loginModal')">Login</a>
+      <a onclick="openModal('registerModal')">Signup</a>
+    </div>
+    <button class="mode-toggle" onclick="toggleMode()"><i class="bi bi-brightness-high-fill"></i></button>
+  </nav>
+
+  
+  <!-- Login Modal -->
+  <div id="loginModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal('loginModal')">&times;</span>
+      <h2>Login</h2>
+      <input type="text" placeholder="Username" required>
+      <input type="password" placeholder="Password" required>
+      <button>Login</button>
+      <p><a href="#" onclick="closeModal('loginModal'); openModal('registerModal');">Don't have an account? Register</a></p>
+      <p><a href="#">Forgot Password?</a></p>
+    </div>
+  </div>
+
+  <!-- Register Modal -->
+  <div id="registerModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal('registerModal')">&times;</span>
+      <h2>Register</h2>
+      <input type="text" placeholder="Name" required>
+      <input type="text" placeholder="Country Code" required>
+      <input type="text" placeholder="Phone Number" required>
+      <input type="email" placeholder="Email" required>
+      <button>Send OTP</button>
+      <input type="text" placeholder="Enter OTP" required>
+      <button>Register</button>
+      <p><a href="#" onclick="closeModal('registerModal'); openModal('loginModal');">Already have an account? Login</a></p>
+    </div>
+  </div>
+  <div class="news-section">
+    <!-- Additional 10 News Items -->
+    <div class="news-item">
+      <img src="images/news-1.jpg" alt="News Image">
+      <div class="news-content">
+        <h3>India's New Head Coach Announced</h3>
+        <p>The BCCI has announced a new head coach for Team India.</p>
+      </div>
+    </div>
+    <div class="news-item">
+      <img src="images/news-2.webp" alt="News Image">
+      <div class="news-content">
+        <h3>Pakistan's T20 World Cup Squad Revealed</h3>
+        <p>Pakistan has announced its squad for the upcoming T20 World Cup.</p>
+      </div>
+    </div>
+    <div class="news-item">
+      <img src="images/news-3.webp" alt="News Image">
+      <div class="news-content">
+        <h3>South Africa's Historic Win in Test Series</h3>
+        <p>South Africa secured a historic victory in the latest Test series.</p>
+      </div>
+    </div>
+    <div class="news-item">
+      <img src="images/news-4.webp" alt="News Image">
+      <div class="news-content">
+        <h3>New Zealand's Captain Speaks on Upcoming Matches</h3>
+        <p>New Zealand's captain shares his thoughts on upcoming fixtures.</p>
+      </div>
+    </div>
+    <div class="news-item">
+      <img src="images/news-5.webp" alt="News Image">
+      <div class="news-content">
+        <h3>IPL 2025: Teams Announce Retained Players</h3>
+        <p>Franchises announce their retained players ahead of IPL 2025.</p>
+      </div>
+    </div>
+    <div class="news-item">
+      <img src="images/news-6.webp" alt="News Image">
+      <div class="news-content">
+        <h3>England's Bowling Attack Faces Challenges</h3>
+        <p>England faces major challenges with its bowling attack ahead of the Ashes.</p>
+      </div>
+    </div>
+    <div class="news-item">
+      <img src="images/news-7.jpg" alt="News Image">
+      <div class="news-content">
+        <h3>West Indies' All-Rounder Joins IPL</h3>
+        <p>A top West Indies all-rounder secures a big IPL contract.</p>
+      </div>
+    </div>
+    <div class="news-item">
+      <img src="images/news-8.webp" alt="News Image">
+      <div class="news-content">
+        <h3>Sri Lanka's Young Talent Shines</h3>
+        <p>Sri Lanka's emerging cricketers impress in their latest matches.</p>
+      </div>
+    </div>
+    <div class="news-item">
+      <img src="images/news-9.webp" alt="News Image">
+      <div class="news-content">
+        <h3>Afghanistan Aims for Major ICC Trophy</h3>
+        <p>Afghanistan's captain is confident about winning a major ICC tournament.</p>
+      </div>
+    </div>
+    <div class="news-item">
+      <img src="images/news-10.webp" alt="News Image">
+      <div class="news-content">
+        <h3>Rohit Sharma's New Record in ODIs</h3>
+        <p>Rohit Sharma breaks another ODI record with his latest performance.</p>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <p>&copy; 2025 CricXX. All Rights Reserved.</p>
+  </footer>
+  <script>
+    function openModal(id) {
+      document.getElementById(id).style.display = "block";
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).style.display = "none";
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+      document.querySelector(".nav-links a[href='home.html']").classList.add("active");
+    });
+    function toggleMode() {
+      document.body.classList.toggle('dark-mode');
+      localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+      if (localStorage.getItem('darkMode') === 'true') {
+        document.body.classList.add('dark-mode');
+      }
+    });
+  </script>
+</body>
+</html>

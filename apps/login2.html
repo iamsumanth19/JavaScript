@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../bootstrap/bootstrap-5.3.3-dist/bootstrap-5.3.3-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../bootstrap/bootstrap-icons-1.11.3/bootstrap-icons-1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        .icon{
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#"><i class="bi bi-snow"></i>Amazon</a>
+        </div>
+    </nav>
+    <div class="col-5 m-auto mt-5 " >
+        <div class="card m-auto">
+            <div class="card-head bg-dark text-white text-center">
+                <h2>Login</h2>
+            </div>
+            <div class="card-body">
+                <form action="" id="form-ele">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="pwd-box-text">Show Password</span>
+                        <input type="password"id="pwd-box" class="form-control" aria-label="Amount (to the nearest dollar)">
+                        <span class="input-group-text icon "><i class="bi bi-eye" id="pwd-icon"></i></span>
+                      </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <!--Script Code-->
+    <script>
+        let pwdBox=document.getElementById('pwd-box')
+        let pwdBoxText=document.getElementById('pwd-box-text')
+        let pwdIcon=document.getElementById('pwd-icon')
+
+        pwdIcon.addEventListener('click',function(){
+            let PwdBoxTextType=pwdBox.getAttribute('type')
+
+            if (PwdBoxTextType=='text') pwdBox.setAttribute('type','password')
+            else  pwdBox.setAttribute('type','text')
+            
+            let pwdIconType=pwdIcon.getAttribute('class')
+
+            if (pwdIconType=="bi bi-eye") pwdIcon.setAttribute('class','bi bi-eye-slash')
+            else  pwdIcon.setAttribute('class','bi bi-eye')
+
+            let pwdBoxTextContent=pwdBoxText.textContent
+            console.log(pwdBoxTextContent)
+
+            if (pwdBoxTextContent=='Show Password') pwdBoxText.textContent='Hide Password'
+            else pwdBoxText.textContent='Show Password'
+        })
+       
+    </script>
+</body>
+</html>
